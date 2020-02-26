@@ -30,14 +30,38 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.save_item) {
-            item.setOnMenuItemClickListener {
 
-                selectImageInAlbum()
+        when (item.itemId) {
+            R.id.choose_item ->
+                item.setOnMenuItemClickListener {
+                    selectImageInAlbum()
+                    true
+                }
+            R.id.save_item -> {
+                item.setOnMenuItemClickListener {
 
+                    customView.savePathPorterDuffed()
+
+                    true
+                }
+            }
+            R.id.restore_normal -> {
+
+                customView.restorePorterDuffChanges()
                 true
             }
+            R.id.rotate_right -> {
+                customView.rotateRight()
+
+            }
+            R.id.rotate_left -> {
+
+                customView.rotateLeft()
+
+            }
         }
+
+
 
         return super.onOptionsItemSelected(item)
     }
